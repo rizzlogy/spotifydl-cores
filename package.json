@@ -23,7 +23,7 @@
     "spotify-downloader",
     "music"
   ],
-  "author": "Alen Yohannan",
+  "author": "RizzyFuzz",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/alensaito1/spotifydl-core/issues"
@@ -48,6 +48,6 @@
     "fs-extra": "^11.1.1",
     "spotify-web-api-node": "^5.0.2",
     "yt-search": "^2.10.4",
-    "ytdl-core": "^4.11.3"
+    "ytdl-core": "github:rizzlogy/node-ytdl-core"
   }
 }
