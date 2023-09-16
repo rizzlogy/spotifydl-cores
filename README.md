@@ -8,11 +8,11 @@
 </div>
 
 ## Installation 
-# NPM
+### NPM
 ```sh
 > npm i spotifydl-cores
 ```
-# Github
+### Github
 ```sh
 > npm i github:rizzlogy/spotifydl-cores
 ```
