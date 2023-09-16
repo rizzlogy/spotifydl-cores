@@ -1,6 +1,6 @@
 <div align=center>
 
-# Spotifydl-Core
+# Spotifydl-Cores
 
 <img src="https://img.icons8.com/nolan/256/spotify.png" alt="Never gonna give up, never gonna let you down"/>
 
@@ -8,9 +8,13 @@
 </div>
 
 ## Installation 
-
+# NPM
 ```sh
-> npm i spotifydl-core
+> npm i spotifydl-cores
+```
+# Github
+```sh
+> npm i github:rizzlogy/spotifydl-cores
 ```
 
 ## Intialization 
@@ -18,8 +22,8 @@
 You need to intialize the `Spotify` Class before acessing the methods inside it.
 
 ```js
-const Spotify = require('spotifydl-core').default
-//import Spotify from 'spotifydl-core'
+const Spotify = require('spotifydl-cores').default
+//import Spotify from 'spotifydl-cores'
 
 const credentials = {
     clientId: 'your-client-id',
@@ -29,7 +33,7 @@ const spotify = new Spotify(credentials)
 ```
 
 ## Methods 
-> **NOTE: Only some methods are shown here. Checkout the [docs](https://alensaito1.github.io/spotifydl-core/) for a more in-depth documentation**
+> **NOTE: Only some methods are shown here. Checkout the [docs](https://spotifydl-cores.rizzy.eu.org) for a more in-depth documentation**
 
 **Get Track ⏭️**
 ```JS
@@ -89,7 +93,7 @@ await spotify.downloadPlaylist(playlist_url)
 ```JS
 const fs = require('fs-extra') 
 // Initialization and Authentication 
-const Spotify = require('spotifydl-core').default // Import the library 
+const Spotify = require('spotifydl-cores').default // Import the library 
 const spotify = new Spotify({ // Authentication
     clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3', // <-- add your own clientId 
     clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009', // <-- add your own clientSecret 
@@ -115,8 +119,3 @@ const links = {
 
 //spotify.verifyCredentials().then(() => Promise.all([spotify.getTrack(links.song), spotify.getAlbum(links.album), spotify.getArtistAlbums(links.artist)]).then(console.log))
 ```
-
-# 🙇‍ Special Thanks
-
-- Swapnil Soni: [Spotify-dl](https://github.com/SwapnilSoni1999/spotify-dl)
-- Fent: [Ytdl-core](https://github.com/fent/node-ytdl-core)
