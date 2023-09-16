@@ -12,11 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
-      - run: npm install
       - run: npm i -g prettier
-      - run: npm i -g typedoc
       - run: npm run prettier-format
-      - run: npm run docs
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
