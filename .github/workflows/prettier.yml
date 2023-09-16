@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
+      - run: npm i -g prettier
       - run: npm run prettier-format
       - run: npm run docs
       - name: Commit changes
