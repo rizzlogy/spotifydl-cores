@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: "18.x"
       - run: npm i -g prettier
+      - run: npm i -g typedoc
       - run: npm run prettier-format
       - run: npm run docs
       - name: Commit changes
