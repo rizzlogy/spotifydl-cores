@@ -1,9 +1,9 @@
+const fs = require('fs-extra') 
 const Spotify = require('../dist/Spotify').default
 const spotify = new Spotify({
     clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
     clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009',
 })
-const fs = require('fs-extra') 
 
 const links = {
     artist: 'https://open.spotify.com/artist/7ky9g1jEjCsjNjZbYuflUJ?si=2To3fmc-T9KuyyrQ-Qp5KQ',
