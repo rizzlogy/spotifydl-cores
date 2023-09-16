@@ -1,7 +1,7 @@
-name: Prettier Code
+name: Prettier & docs Code
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 jobs:
   format:
     runs-on: ubuntu-latest
