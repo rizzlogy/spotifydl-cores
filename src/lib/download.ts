@@ -20,7 +20,7 @@ export const downloadYT = async (url: string): Promise<Buffer> => {
     })
     return await new Promise((resolve, reject) => {
         Ffmpeg(stream)
-            .audioBitrate(128)
+            .audioBitrate(320)
             .save(filename)
             .on('error', (err) => reject(err))
             .on('end', async () => {
