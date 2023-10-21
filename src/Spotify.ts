@@ -14,18 +14,20 @@ export default class SpotifyFetcher extends SpotifyApi {
         super(auth)
     }
 
-    private async getOriginalUrl(url: string): Promise<string> {
-        if (url.includes('spotify.link')) {
-            const response = await axios.get(url)
-            const html = response.data
-            const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/)
-            if (hrefMatch && hrefMatch[1]) {
-                return hrefMatch[1]
-            }
-        } else {
-            return url
+    private async function getOriginalUrl(url: string): Promise<string> {
+  if (url.includes("spotify.link")) {
+    return await axios.get(url)
+      .then(response => {
+        const html: string = response.data;
+        const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/);
+        if (hrefMatch && hrefMatch[1]) {
+          const hrefValue: string = hrefMatch[1];
+          return hrefValue;
         }
-    }
+      });
+  }
+  return url;
+}
 
     /**
      * Get the track details of the given track URL
