@@ -21,7 +21,7 @@ export default class SpotifyFetcher extends SpotifyApi {
             const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/)
             if (hrefMatch && hrefMatch[1]) {
                 const hrefValue: string = hrefMatch[1]
-                return hrefValut.includes('?') ? hrefValue.split('?')[0] : hrefValue
+                return hrefValue.includes('?') ? hrefValue.split('?')[0] : hrefValue
             } else {
                 throw new Error('Failed to extract the original URL')
             }
