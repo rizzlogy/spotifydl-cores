@@ -97,7 +97,7 @@ export default class SpotifyFetcher extends SpotifyApi {
         return await this.extractPlaylist(this.getID(url))
     }
 
-    getID = async (url: string): Promise<string> => {
+    getID = async (url: string): string => {
         const originalUrl = await this.getOriginalUrl(url)
         const splits = originalUrl.split('/')
         const ok: string = splits[splits.length - 1]
