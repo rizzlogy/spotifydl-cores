@@ -16,19 +16,18 @@ export default class SpotifyFetcher extends SpotifyApi {
 
     private async getOriginalUrl(url: string): Promise<string> {
         if (url.includes('spotify.link')) {
-            const response = await axios.get(url);
-            const html: string = response.data;
-            const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/);
+            const response = await axios.get(url)
+            const html: string = response.data
+            const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/)
             if (hrefMatch && hrefMatch[1]) {
-                const hrefValue: string = hrefMatch[1];
-                return hrefValue;
+                const hrefValue: string = hrefMatch[1]
+                return hrefValue
             } else {
-                throw new Error('Failed to extract the original URL');
+                throw new Error('Failed to extract the original URL')
             }
         }
-        return url;
+        return url
     }
-
 
     /**
      * Get the track details of the given track URL
@@ -99,11 +98,11 @@ export default class SpotifyFetcher extends SpotifyApi {
     }
 
     getID = async (url: string): string => {
-        const originalUrl = await this.getOriginalUrl(url);
-        const splits = originalUrl.split('/');
-        return splits[splits.length - 1];
+        const originalUrl = await this.getOriginalUrl(url)
+        const splits = originalUrl.split('/')
+        return splits[splits.length - 1]
     }
-    
+
     /**
      * Downloads the given spotify track
      * @param url Url to download
