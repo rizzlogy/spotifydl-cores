@@ -98,7 +98,7 @@ export default class SpotifyFetcher extends SpotifyApi {
         const splits = originalUrl.split('/')
         return await this.extractPlaylist(this.getID(splits[splits.length - 1]))
     }
-    
+
     /**
      * Downloads the given spotify track
      * @param url Url to download
