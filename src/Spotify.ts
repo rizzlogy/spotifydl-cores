@@ -100,7 +100,8 @@ export default class SpotifyFetcher extends SpotifyApi {
     getID = async (url: string): Promise<string> => {
         const originalUrl = await this.getOriginalUrl(url)
         const splits = originalUrl.split('/')
-        return splits[splits.length - 1]
+        const ok: string = splits[splits.length - 1]
+        return ok
     }
 
     /**
