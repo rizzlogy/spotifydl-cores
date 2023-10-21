@@ -14,22 +14,18 @@ export default class SpotifyFetcher extends SpotifyApi {
         super(auth)
     }
 
-    private async function getOriginalUrl(url: string): Promise<string | null> {
-    if (url.includes("spotify.link")) {
-    return axios.get(url)
-      .then(response => {
-        const html = response.data;
-        const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/);
-        if (hrefMatch && hrefMatch[1]) {
-          const hrefValue = hrefMatch[1];
-          return hrefValue;
+    private async getOriginalUrl(url: string): Promise<string | null> {
+        if (url.includes("spotify.link")) {
+            const response = await axios.get(url);
+            const html = response.data;
+            const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/);
+            if (hrefMatch && hrefMatch[1]) {
+                return hrefMatch[1];
+            }
+            return null;
+        } else {
+            return url;
         }
-        return null;
-      });
-     } else {
-      return url;
-     }
-     return null;
     }
     
     /**
