@@ -3,6 +3,7 @@ import SpotifyApi, { IAuth, UserObjectPublic } from './lib/API'
 import Artist from './lib/details/Atrist'
 import Playlist from './lib/details/Playlist'
 import SongDetails from './lib/details/Track'
+import axios from 'axios'
 import { downloadYT, downloadYTAndSave } from './lib/download'
 import SpotifyDlError from './lib/Error'
 import getYtlink from './lib/getYtlink'
@@ -13,6 +14,24 @@ export default class SpotifyFetcher extends SpotifyApi {
         super(auth)
     }
 
+    private async function getOriginalUrl(url: string): Promise<string | null> {
+    if (url.includes("spotify.link")) {
+    return axios.get(url)
+      .then(response => {
+        const html = response.data;
+        const hrefMatch = html.match(/<a class="secondary-action" href="(.*?)"/);
+        if (hrefMatch && hrefMatch[1]) {
+          const hrefValue = hrefMatch[1];
+          return hrefValue;
+        }
+        return null;
+      });
+     } else {
+      return url;
+     }
+     return null;
+    }
+    
     /**
      * Get the track details of the given track URL
      * @param url
@@ -20,7 +39,8 @@ export default class SpotifyFetcher extends SpotifyApi {
      */
     getTrack = async (url: string): Promise<SongDetails> => {
         await this.verifyCredentials()
-        return await this.extractTrack(this.getID(url))
+        const originalUrl = await this.getOriginalUrl(url)
+        return await this.extractTrack(this.getID(originalUrl))
     }
 
     /**
