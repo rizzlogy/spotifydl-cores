@@ -22,7 +22,6 @@ export default class SpotifyFetcher extends SpotifyApi {
             if (hrefMatch && hrefMatch[1]) {
                 return hrefMatch[1]
             }
-            return null
         } else {
             return url
         }
