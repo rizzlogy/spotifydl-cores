@@ -48,7 +48,8 @@ export default class SpotifyFetcher extends SpotifyApi {
      */
     getAlbum = async (url: string): Promise<Playlist> => {
         await this.verifyCredentials()
-        return await this.extractAlbum(this.getID(url))
+        const originalUrl = await this.getOriginalUrl(url)
+        return await this.extractAlbum(this.getID(originalUrl))
     }
 
     /**
@@ -58,7 +59,8 @@ export default class SpotifyFetcher extends SpotifyApi {
      */
     getArtist = async (url: string): Promise<Artist> => {
         await this.verifyCredentials()
-        return await this.extractArtist(this.getID(url))
+        const originalUrl = await this.getOriginalUrl(url)
+        return await this.extractArtist(this.getID(originalUrl))
     }
 
     /**
@@ -93,11 +95,13 @@ export default class SpotifyFetcher extends SpotifyApi {
      */
     getPlaylist = async (url: string): Promise<Playlist> => {
         await this.verifyCredentials()
-        return await this.extractPlaylist(this.getID(url))
+        const originalUrl = await this.getOriginalUrl(url)
+        return await this.extractPlaylist(this.getID(originalUrl))
     }
 
     getID = (url: string): string => {
-        const splits = url.split('/')
+        const originalUrl = await this.getOriginalUrl(url)
+        const splits = originalUrl.split('/')
         return splits[splits.length - 1]
     }
 
